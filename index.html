@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    
+      <title>Lanyon – Jekyll without the hassle</title>
+    
+    <meta name="keywords" content="static, site, generator, jekyll">
+    <meta name="description" content="Lanyon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/build/app.1eaada0becc0394f7566.css" media="screen" charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <div id="header-overlay"></div>
+      <a href="/">
+        <h1 id="logo">Lanyon</h1>
+      </a>
+      <div id="menu">
+        <i class="material-icons">menu</i>
+        <ul id="menu-items">
+        </ul>
+      </div>
+      <span id="more">
+        <i class="material-icons">expand_more</i>
+      </span>
+    </header>
+    <section id="content">
+      
+        <div class="Social">
+          <iframe src="http://ghbtns.com/github-btn.html?user=kvz&amp;repo=lanyon&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+          <a href="https://travis-ci.org/kvz/lanyon"><img src="https://travis-ci.org/kvz/lanyon.svg" alt="Build Status"></a>
+        </div>
+      
+
+      <p>Lanyon is a static site generator. It functions as a wrapper around Jekyll, Webpack, and BrowserSync, in an attempt to give you the best of all worlds. Lanyon allows you to build and refresh assets instantly and offers fast and reliable file watching. 
+Breaking with the traditional unix philosophy, Lanyon tries to do many things. Things such as spell checking or setting up a working Ruby environment. One might, of course, argue that Lanyon is applying unix philosophy after all, by restricting its underlying tools do perform only a single task. <img class="emoji" title=":thinking:" alt=":thinking:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f914.png" height="20" width="20" align="absmiddle"></p>
+
+<p>Whichever the case, Lanyon is certainly okay with embracing any philosophy, as long as it amounts to THE highest level of convenience when it comes to building static websites. Getting started with Lanyon should be as simple as <code class="highlighter-rouge">npm install lanyon --save</code> and <code class="highlighter-rouge">npm start</code>.</p>
+
+<h2 id="state">State</h2>
+
+<p>Lanyon is currently in pre-alpha. We are still making many changes and – in keeping with SemVer tradition – are allowing ourselves to make breaking ones in <code class="highlighter-rouge">&lt;1</code>. For that and other reasons, we do not recommend using it for anything serious yet.</p>
+
+<h2 id="used-by">Used by</h2>
+
+<p>Lanyon is authored by people at <a href="https://transloadit.com">Transloadit</a>, where it already powers their website and most of their pet-projects:</p>
+
+<ul>
+  <li><a href="https://transloadit.com">https://transloadit.com</a></li>
+  <li><a href="http://tus.io">http://tus.io</a></li>
+  <li><a href="http://transloadify.io">http://transloadify.io</a></li>
+  <li><a href="http://freyproject.io">http://freyproject.io</a></li>
+  <li><a href="http://bash3boilerplate.sh">http://bash3boilerplate.sh</a></li>
+  <li><a href="http://kvz.io">http://kvz.io</a></li>
+  <li>
+<a href="http://lanyon.io">http://lanyon.io</a> <img class="emoji" title=":tada:" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png" height="20" width="20" align="absmiddle"> surprise!</li>
+</ul>
+
+<p>If you are an early adopter of Lanyon, <a href="https://github.com/kvz/lanyon/issues/new">let us know</a> and get listed! <img class="emoji" title=":heart:" alt=":heart:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png" height="20" width="20" align="absmiddle"></p>
+
+<h2 id="background">Background</h2>
+
+<p>Jekyll is great for documentation and static websites sites, its ecosystem is vast and mature, things that are straightforward in Jekyll often require odd workarounds in Hexo or Hugo. Apart from that, backing from GitHub (Pages) isn’t the worst thing to have either. With that in mind, we can assume that whatever we invest in Jekyll today, will be relevant for a few years to come.</p>
+
+<p>Admittedly, the other generators can also be very appealing because they humiliate Jekyll in certain areas, such as file watching, asset building, speed, browser integration, and ease of install.</p>
+
+<p>Here is an opinionated overview:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Quality</th>
+      <th style="text-align: center">Hugo</th>
+      <th style="text-align: center">Hexo</th>
+      <th style="text-align: center">Jekyll</th>
+      <th style="text-align: center">Lanyon</th>
+      <th style="text-align: center">Webpack/BrowserSync/Nodemon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Easy to maintain many documents</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">
+<img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/27a1.png" height="20" width="20" align="absmiddle">
+</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Great templating engine</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">
+<img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/27a1.png" height="20" width="20" align="absmiddle">
+</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Vast and mature ecosystem</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">
+<img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/27a1.png" height="20" width="20" align="absmiddle">
+</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center">
+<img class="emoji" title=":arrow_left:" alt=":arrow_left:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b05.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Easy to get help</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">
+<img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/27a1.png" height="20" width="20" align="absmiddle">
+</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center">
+<img class="emoji" title=":arrow_left:" alt=":arrow_left:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b05.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Backed by GitHub</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">
+<img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":arrow_right:" alt=":arrow_right:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/27a1.png" height="20" width="20" align="absmiddle">
+</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Easy to install</td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center">
+<img class="emoji" title=":arrow_left:" alt=":arrow_left:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b05.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Browser integration for content reloads</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center">
+<img class="emoji" title=":arrow_left:" alt=":arrow_left:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b05.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Fast asset building</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center">
+<img class="emoji" title=":arrow_left:" alt=":arrow_left:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b05.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Fast and robust filewatching</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center">
+<img class="emoji" title=":arrow_left:" alt=":arrow_left:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b05.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">HMR / immediate in-browser asset refreshment</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle"></td>
+      <td style="text-align: center">
+<img class="emoji" title=":arrow_left:" alt=":arrow_left:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b05.png" height="20" width="20" align="absmiddle"><img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2705.png" height="20" width="20" align="absmiddle">
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>What we set out to do with Lanyon, is to get the best of all worlds. We are doing so by:</p>
+
+<ul>
+  <li>Taking a sledge hammer <img class="emoji" title=":hammer:" alt=":hammer:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f528.png" height="20" width="20" align="absmiddle"> approach towards getting a suitable version of Ruby to work on your system. Lanyon traverses <a href="https://www.docker.com">Docker</a>, <a href="https://github.com/rbenv/rbenv">rbenv</a>, <a href="https://rvm.io">RVM</a>, and <a href="http://brew.sh">Homebrew</a>, and takes the first method that provides a working Ruby 2 install. All other dependencies are then installed locally in the <code class="highlighter-rouge">.lanyon</code>, relieving any installation pains.</li>
+  <li>Using Browsersync with Webpack middleware, featuring Hot Module Reloading for stylesheets and JavaScript.</li>
+  <li>Using Nodemon for <code class="highlighter-rouge">.md</code> / <code class="highlighter-rouge">.html</code> file-watching, while kicking incremental Jekyll builds for content.</li>
+</ul>
+
+<p>This enables you to have locally refreshing assets in real time (e.g. in-browser font size changes as you save without the page reloading), and have much more reliable and performant content watching than Jekyll offers. It also gives us libsass (vs Ruby sass), and can sync browsers on many devices in your office so that they will follow along with what you are doing on your main workstation. Even just connecting your phone in this fashion goes a long way in spotting responsive issues quickly. This is a luxury you might normally not be able to afford for your projects, but now the tech to do this works right out of the box with just a single <code class="highlighter-rouge">npm install</code>!</p>
+
+<p>Lanyon is geared towards developer convenience and, as a bonus, offers:</p>
+
+<ul>
+  <li>Deploys to GitHub Pages from Travis CI or your workstation (we are not compatible with as-is <code class="highlighter-rouge">gh-pages</code> branch-filling, and have no desire to support that)</li>
+  <li>JS linting (WIP)</li>
+  <li>Markdown linting (WIP)</li>
+  <li>Spell checking (WIP)</li>
+</ul>
+
+<p>Lanyon is used by <a href="https://transloadit.com">Transloadit</a> for static sites, and focuses on their use-case. Trying to get so many moving parts to behave as they should comes with challenges and a ton of configuration options. Lanyon won’t support everything that its underlying components has to offer. Lanyon prefers convention over configuration.</p>
+
+<p>We will be assuming:</p>
+
+<ul>
+  <li>Sass</li>
+  <li>ES6</li>
+  <li>Assets in <code class="highlighter-rouge">./assets/</code>, with transpiled assets in <code class="highlighter-rouge">./assets/build/</code>
+</li>
+  <li>Node modules in <code class="highlighter-rouge">./node_modules/</code>, Bower components in <code class="highlighter-rouge">./assets/bower_components/</code> (if any)</li>
+  <li>Our users already have a working Node.js setup and don’t mind a <code class="highlighter-rouge">package.json</code> in their project</li>
+  <li>GitHub pages for deploys (with Travis CI as a builder)</li>
+  <li>To simplify things, any environment other than <code class="highlighter-rouge">development</code> means <code class="highlighter-rouge">production</code>. If you have additional stages like <code class="highlighter-rouge">test</code>, you will likely want to test as close to production as possible anyway.</li>
+</ul>
+
+<p>If you are thinking about submitting PRs for other features/flexibility, please get in touch first as we might not be on board.</p>
+
+<p>If, however, there happens to be an overlap with your use case and you can live with our constraints, here is how you get started with Lanyon:</p>
+
+<h2 id="install">Install</h2>
+
+<div class="language-bash highlighter-rouge">
+<pre class="highlight"><code>npm install lanyon --save 
+</code></pre>
+</div>
+
+<h2 id="use">Use</h2>
+
+<p>The recommended way to use Lanyon is to add it to your project’s npm scripts, in your <code class="highlighter-rouge">package.json</code>, add:</p>
+
+<div class="language-javascript highlighter-rouge">
+<pre class="highlight"><code><span class="p">...</span>
+<span class="s2">"lanyon"</span><span class="err">:</span> <span class="p">{</span>
+  <span class="s2">"entries"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="c1">// As single 'app' entry is the default. </span>
+    <span class="c1">// List all entries here if you have more</span>
+    <span class="s2">"app"</span>
+  <span class="p">],</span>
+  <span class="s2">"gems"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="c1">// If you require custom gems</span>
+    <span class="s2">"liquid_pluralize"</span><span class="err">:</span> <span class="s2">"1.0.2"</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+<span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+  <span class="s2">"install"</span><span class="err">:</span> <span class="s2">"bower install &amp;&amp; lanyon install"</span><span class="p">,</span>
+  <span class="s2">"build"</span><span class="err">:</span> <span class="s2">"lanyon build"</span><span class="p">,</span>
+  <span class="s2">"build:emoji"</span><span class="err">:</span> <span class="s2">"lanyon build:emoji"</span><span class="p">,</span>
+  <span class="s2">"build:production"</span><span class="err">:</span> <span class="s2">"LANYON_ENV=production lanyon build"</span><span class="p">,</span>
+  <span class="s2">"serve"</span><span class="err">:</span> <span class="s2">"lanyon serve"</span><span class="p">,</span>
+  <span class="s2">"serve:production"</span><span class="err">:</span> <span class="s2">"LANYON_ENV=production lanyon serve"</span><span class="p">,</span>
+  <span class="s2">"start"</span><span class="err">:</span> <span class="s2">"lanyon start"</span><span class="p">,</span>
+  <span class="s2">"start:production"</span><span class="err">:</span> <span class="s2">"npm run build:production &amp;&amp; npm run serve:production"</span><span class="p">,</span>
+  <span class="s2">"encrypt"</span><span class="err">:</span> <span class="s2">"lanyon encrypt"</span><span class="p">,</span>
+  <span class="s2">"deploy"</span><span class="err">:</span> <span class="s2">"lanyon deploy"</span>
+<span class="p">},</span>
+<span class="p">...</span>
+</code></pre>
+</div>
+
+<p>If you make changes to your gems later on, re-run <code class="highlighter-rouge">npm install</code> to re-trigger a build.</p>
+
+<p>Have an <code class="highlighter-rouge">assets/app.js</code> in which you require both javascripts and stylesheets:</p>
+
+<div class="language-javascript highlighter-rouge">
+<pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s1">'./main.js'</span><span class="p">)</span> <span class="c1">// &lt;-- your original sources, as many as you like</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./style.css'</span><span class="p">)</span> <span class="c1">// &lt;-- yes, we also require (s)css. This is a Webpack thing</span>
+
+<span class="c1">// Enable Hot Module reloading:</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">module</span><span class="p">.</span><span class="nx">hot</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">hot</span><span class="p">.</span><span class="nx">accept</span><span class="p">(</span><span class="s1">'./main.js'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">require</span><span class="p">(</span><span class="s1">'./main.js'</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">hot</span><span class="p">.</span><span class="nx">accept</span><span class="p">(</span><span class="s1">'./style.css'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">require</span><span class="p">(</span><span class="s1">'./style.css'</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note</strong> You do not have to create your own <code class="highlighter-rouge">app.css</code> stylesheet entry-point. 
+You are supposed to require CSS in <code class="highlighter-rouge">app.js</code>, which will then be written out by Lanyon
+to <code class="highlighter-rouge">app.css</code> in production (and live in Webpack memory during development). <img class="emoji" title=":scream:" alt=":scream:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f631.png" height="20" width="20" align="absmiddle"></p>
+
+<p>Include the build in your layout. The same location works both for production artifact files, and magic Hot Module Reloading during development.</p>
+
+<div class="language-html highlighter-rouge">
+<pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>No hassle<span class="nt">&lt;/title&gt;</span> 
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"{{site.lanyon_assets.app.css}}"</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span> ... <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"{{site.lanyon_assets.app.js}}"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p><strong>Note</strong> Lanyon provides the magic <code class="highlighter-rouge">lanyon_assets</code> variable in Jekyll, pointing to either <code class="highlighter-rouge">/assets/build/app.js</code> in development, or <code class="highlighter-rouge">/assets/build/app.bfcebf1c103b9f8d41bd.js</code> in production, so that you can enable long-term caching of assets and also cache-bust them whenever they change. This works for all entries and asset types, and thus also for e.g. <code class="highlighter-rouge">common.css</code>.</p>
+
+<p>Afterwards, type <code class="highlighter-rouge">npm start</code>. This will kick a build, spin up file watching and a browser with HMR asset reloading enabled. For more inspiration, check out the <a href="./example"><code class="highlighter-rouge">example</code></a> folder in the Lanyon repository. The Lanyon website is also bundled under <a href="./website"><code class="highlighter-rouge">website</code></a>, this is a little bit more advanced as it builds from the <code class="highlighter-rouge">README.md</code> and other Markdown files in the repo. This means there is no separate content to maintain on <a href="http://lanyon.io">http://lanyon.io</a>.</p>
+
+<h2 id="changelog">Changelog</h2>
+
+<p>Please see the <a href="./CHANGELOG.md">CHANGELOG.md</a> file.</p>
+
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+<p>Please see the <a href="./FAQ.md">FAQ.md</a> file.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>Please see the <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a> file.</p>
+
+<h2 id="reading-list">Reading List</h2>
+
+<p>These articles where helpful in creating Lanyon</p>
+
+<ul>
+  <li><a href="https://github.com/petehunt/webpack-howto/blob/master/README.md#8-optimizing-common-code">https://github.com/petehunt/webpack-howto/blob/master/README.md#8-optimizing-common-code</a></li>
+  <li><a href="https://www.jonathan-petitcolas.com/2016/08/12/plugging-webpack-to-jekyll-powered-pages.html">https://www.jonathan-petitcolas.com/2016/08/12/plugging-webpack-to-jekyll-powered-pages.html</a></li>
+  <li><a href="https://webpack.github.io/docs/configuration.html#resolve-alias">https://webpack.github.io/docs/configuration.html#resolve-alias</a></li>
+  <li><a href="https://github.com/HenrikJoreteg/hjs-webpack">https://github.com/HenrikJoreteg/hjs-webpack</a></li>
+  <li><a href="http://webpack.github.io/docs/webpack-dev-middleware.html">http://webpack.github.io/docs/webpack-dev-middleware.html</a></li>
+  <li><a href="http://stackoverflow.com/a/28989476/151666">http://stackoverflow.com/a/28989476/151666</a></li>
+  <li><a href="https://github.com/webpack/webpack-dev-server/issues/97#issuecomment-70388180">https://github.com/webpack/webpack-dev-server/issues/97#issuecomment-70388180</a></li>
+  <li><a href="https://webpack.github.io/docs/hot-module-replacement.html">https://webpack.github.io/docs/hot-module-replacement.html</a></li>
+  <li><a href="https://github.com/css-modules/webpack-demo/issues/8#issuecomment-133922019">https://github.com/css-modules/webpack-demo/issues/8#issuecomment-133922019</a></li>
+  <li><a href="https://github.com/gowravshekar/font-awesome-webpack">https://github.com/gowravshekar/font-awesome-webpack</a></li>
+  <li><a href="https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code">https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code</a></li>
+  <li><a href="https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w0elv8n7o">https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w0elv8n7o</a></li>
+  <li><a href="https://webpack.github.io/docs/optimization.html">https://webpack.github.io/docs/optimization.html</a></li>
+</ul>
+
+<h2 id="social-media-discussions">Social Media Discussions</h2>
+
+<ul>
+  <li><a href="https://www.reddit.com/r/webdev/comments/5m5pk9/introducing_lanyon/">https://www.reddit.com/r/webdev/comments/5m5pk9/introducing_lanyon/</a></li>
+  <li><a href="https://www.producthunt.com/posts/lanyon">https://www.producthunt.com/posts/lanyon</a></li>
+</ul>
+
+<h2 id="authors">Authors</h2>
+
+<ul>
+  <li><a href="https://transloadit.com/about/#kevin">Kevin van Zonneveld</a></li>
+  <li><a href="https://github.com/arturi">Artur Paikin</a></li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>Copyright (c) 2016 Kevin van Zonneveld. Licenses under <a href="LICENSE">MIT</a>.</p>
+
+
+
+      <div class="Social">
+        <iframe src="http://ghbtns.com/github-btn.html?user=kvz&amp;repo=lanyon&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+      </div>
+
+      <p>
+        <small>
+          <hr>
+          Website design based on
+          the wonderful <a href="http://apex.run">apex.run</a>
+          with <a href="https://twitter.com/tjholowaychuk/status/744909762865696769">the author's consent</a>.
+        </small>
+      </p>
+    </section>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/languages/bash.min.js"></script>
+  <script async src="/assets/build/app.1eaada0becc0394f7566.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-63083-14', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    
+      <title>Changelog | Lanyon – Jekyll without the hassle | Lanyon</title>
+    
+    <meta name="keywords" content="static, site, generator, jekyll">
+    <meta name="description" content="Lanyon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/build/app.1eaada0becc0394f7566.css" media="screen" charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <div id="header-overlay"></div>
+      <a href="/">
+        <h1 id="logo">Lanyon</h1>
+      </a>
+      <div id="menu">
+        <i class="material-icons">menu</i>
+        <ul id="menu-items">
+        </ul>
+      </div>
+      <span id="more">
+        <i class="material-icons">expand_more</i>
+      </span>
+    </header>
+    <section id="content">
+      
+
+      <h1 id="changelog">Changelog</h1>
+
+<h2 id="unplanned">Unplanned</h2>
+
+<ul>
+  <li>[ ] jRuby support https://spin.atomicobject.com/2013/04/24/bundler-jruby-complete/</li>
+  <li>[ ] Consider shipping all of Lanyon inside a Docker container</li>
+  <li>[ ] Add <code class="highlighter-rouge">travis</code> to Gemfile, and run it from our local shims vs from global during <code class="highlighter-rouge">lanyon encrypt</code>
+</li>
+  <li>[ ] Throw an error if we find legacy Jekyll residue such as <code class="highlighter-rouge">./vendors</code> or <code class="highlighter-rouge">.bundle</code>
+</li>
+  <li>[ ] Maybe add https://github.com/btford/write-good and or text-lint (#8)</li>
+  <li>[ ] Consider postcss</li>
+  <li>[ ] Hooks are ran with every build, but not when doing HMR. We might be able to write a <code class="highlighter-rouge">CallHooksPlugin</code> to work around this that calls the hook for assets, while lib/cli.js calls it for content</li>
+  <li>[ ] Consider sourcemaps like https://github.com/rstacruz/webpack-tricks#source-maps</li>
+  <li>[ ] Consider bundlesize tracking on cli like https://github.com/rstacruz/webpack-tricks#investigating-bundle-sizes</li>
+  <li>[ ] Wait on https://github.com/imagemin/imagemin-cli/pull/11 and https://github.com/imagemin/imagemin/issues/226 and add image building from <code class="highlighter-rouge">assets/images</code> -&gt; <code class="highlighter-rouge">assets/build/images</code>
+</li>
+  <li>[ ] Windows support (consider: https://github.com/avajs/ava/blob/master/appveyor.yml) (#1)</li>
+  <li>[ ] Go over all <code class="highlighter-rouge">process.env.*</code> and make sure they are only at the head of <code class="highlighter-rouge">config.js</code>
+</li>
+  <li>[ ] Add a <code class="highlighter-rouge">lanyon init</code> that a globally installed lanyon could use to <code class="highlighter-rouge">npm install --save</code> itself into a local project and run the lanyon installer there. Make sure the globally installed lanyon propery does a  <code class="highlighter-rouge">preferLocalPackage</code> when you type <code class="highlighter-rouge">lanyon start</code> in said local project</li>
+  <li>[ ] Add http://cssnano.co/</li>
+</ul>
+
+<h2 id="master">master</h2>
+
+<p>Released: TBA.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.69...master">Diff</a>.</p>
+
+<ul>
+  <li>[ ] Add a ‘real’ command line parser for <code class="highlighter-rouge">lib/cli.js</code> like minimist</li>
+  <li>[ ] Refactor <code class="highlighter-rouge">install</code> so that we can try several install approaches until one succeeds</li>
+  <li>[ ] Remove <code class="highlighter-rouge">shelljs</code> completely</li>
+  <li>[ ] Fix bug where osx/rvm install won’t work via <code class="highlighter-rouge">LANYON_ONLY=rvm ./scripts/test-acceptance.sh</code>
+</li>
+  <li>[ ] Ship a <code class="highlighter-rouge">deploy</code> executable for Travis instead of generating one, which relies on <code class="highlighter-rouge">lanyon install</code>, which is not a file, resulting in more complicated <code class="highlighter-rouge">.travis.yml</code> files</li>
+  <li>[ ] Fix bug where failed deploy is not fatal: https://travis-ci.org/kvz/invig/builds/202931498#L627</li>
+  <li>[ ] Make it so that you can only build e.g. a homepage via <code class="highlighter-rouge">LANYON_EXCLUDE=* LANYON_INCLUDE=home.html,_layouts/default.html</code>. However, we first need this Jekyll issue resolved: https://github.com/jekyll/jekyll/issues/4791#issuecomment-289021488</li>
+</ul>
+
+<h2 id="v0069">v0.0.69</h2>
+
+<p>Released: 2017-03-28.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.68...v0.0.69">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add support for <code class="highlighter-rouge">extraWebroots</code> so that you can serve e.g. dummy dynamic content in development</li>
+</ul>
+
+<h2 id="v0068">v0.0.68</h2>
+
+<p>Released: 2017-03-24.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.67...v0.0.68">Diff</a>.</p>
+
+<ul>
+  <li>[x] Always profile Jekyll on one-off builds</li>
+  <li>[x] Better error handling for YAML exceptions</li>
+  <li>[x] Fix: <code class="highlighter-rouge">YAMLException: unacceptable kind of an object to dump [object Undefined]</code>
+</li>
+</ul>
+
+<h2 id="v0067">v0.0.67</h2>
+
+<p>Released: 2017-03-24.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.66...v0.0.67">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix issue where production builds reported bad sourcemaps</li>
+  <li>[x] Fix issue where empty <code class="highlighter-rouge">LANYON_DISABLE_GEMS</code> list results in no gems being enabled</li>
+</ul>
+
+<h2 id="v0066">v0.0.66</h2>
+
+<p>Released: 2017-03-24.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.65...v0.0.66">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix issue where multiple webpack instances where running</li>
+</ul>
+
+<h2 id="v0065">v0.0.65</h2>
+
+<p>Released: 2017-03-23.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.64...v0.0.65">Diff</a>.</p>
+
+<ul>
+  <li>[x] Support for <code class="highlighter-rouge">LANYON_DISABLE_GEMS=jekyll-feed,jekyll-sitemap</code> allowing you to temporarily disable time consuming plugins</li>
+</ul>
+
+<h2 id="v0064">v0.0.64</h2>
+
+<p>Released: 2017-03-23.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.62...v0.0.63">Diff</a>.</p>
+
+<ul>
+  <li>[x] Teach Lanyon about zero leading version numbers such as <code class="highlighter-rouge">Docker version 17.03.0-ce</code>
+</li>
+  <li>[x] Now that jemoji relies on <code class="highlighter-rouge">gemoji</code> 3.0+ (vs ~2.0), add cli command to generate emoji into <code class="highlighter-rouge">assets/images/emoji</code> (<code class="highlighter-rouge">build:emoji</code> calling <code class="highlighter-rouge">bundle exec gemoji extract assets/images/emoji</code>)</li>
+  <li>[x] Switch from <code class="highlighter-rouge">eval-cheap-source-map</code> to <code class="highlighter-rouge">inline-eval-cheap-source-map</code> for presumably faster builds https://github.com/erikras/react-redux-universal-hot-example/issues/616</li>
+  <li>[x] Upgrade GitHub pages from 112 to 129</li>
+  <li>[x] Remove <code class="highlighter-rouge">jekyll-crosspost-to-medium</code> as built in gem</li>
+  <li>[x] Downgrade <code class="highlighter-rouge">css-loader</code> to 0.14.5 to address superslow HMR builds https://github.com/webpack-contrib/css-loader/issues/124</li>
+  <li>[x] Pass down <code class="highlighter-rouge">DEBUG</code> env var</li>
+  <li>[x] Upgrade <code class="highlighter-rouge">scrolex@0.0.27</code>
+</li>
+</ul>
+
+<h2 id="v0063">v0.0.63</h2>
+
+<p>The release that wasn’t</p>
+
+<h2 id="v0062">v0.0.62</h2>
+
+<p>Released: 2017-02-18.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.61...v0.0.62">Diff</a>.</p>
+
+<ul>
+  <li>[x] Upgrade node-sass to address peerInvalid: https://travis-ci.org/kvz/lanyon/jobs/202922768#L455</li>
+</ul>
+
+<h2 id="v0061">v0.0.61</h2>
+
+<p>Released: 2017-02-18.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.60...v0.0.61">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix bug: Do not add empty items to <code class="highlighter-rouge">exclude</code> (or everything gets excluded)</li>
+</ul>
+
+<h2 id="v0060">v0.0.60</h2>
+
+<p>Released: 2017-02-17.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.59...v0.0.60">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add support for e.g. <code class="highlighter-rouge">LANYON_EXCLUDE=_posts,_demos</code> env var, allowing you to temporarily not build content</li>
+  <li>[x] Instead of overwriting a project’s <code class="highlighter-rouge">exclude</code>, add to it.</li>
+  <li>[x] Upgrade to resolve-url &gt;2.0, fixing a bug where leading to broken font-awesome icons in chrome in dev mode</li>
+  <li>[x] Upgrade minor &amp; patch level dependencies</li>
+</ul>
+
+<h2 id="v0059">v0.0.59</h2>
+
+<p>Released: 2017-02-15.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.58...v0.0.59">Diff</a>.</p>
+
+<ul>
+  <li>[x] Upgrade to <code class="highlighter-rouge">scrolex@0.0.26</code> which will default to <code class="highlighter-rouge">passthru</code> <code class="highlighter-rouge">mode</code> on Travis CI and non-TTY environments</li>
+</ul>
+
+<h2 id="v0058">v0.0.58</h2>
+
+<p>Released: 2017-02-15.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.57...v0.0.58">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix bug that prevented resetting of shims</li>
+</ul>
+
+<h2 id="v0057">v0.0.57</h2>
+
+<p>Released: 2017-02-15.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.56...v0.0.57">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix rvm homebrew lock on Travis</li>
+  <li>[x] Add support for <code class="highlighter-rouge">postbuild</code> hooks</li>
+</ul>
+
+<h2 id="v0056">v0.0.56</h2>
+
+<p>Released: 2017-02-15.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.55...v0.0.56">Diff</a>.</p>
+
+<ul>
+  <li>[x] Only use singlescroll on <code class="highlighter-rouge">start</code>
+</li>
+  <li>[x] In boot, treat <code class="highlighter-rouge">lanyon</code> like any other <code class="highlighter-rouge">npmBin</code>
+</li>
+  <li>[x] Switch to using rvm <code class="highlighter-rouge">--binary</code> to avoid compile issues (https://travis-ci.org/kvz/lanyon/jobs/201786728#L1679)</li>
+</ul>
+
+<h2 id="v0055">v0.0.55</h2>
+
+<p>Released: 2017-02-15.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.54...v0.0.55">Diff</a>.</p>
+
+<ul>
+  <li>[x] Find <code class="highlighter-rouge">node_modules/.bin/lanyon</code> in <code class="highlighter-rouge">npmRoot</code> vs <code class="highlighter-rouge">projectDir</code>
+</li>
+</ul>
+
+<h2 id="v0054">v0.0.54</h2>
+
+<p>Released: 2017-02-14.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.53...v0.0.54">Diff</a>.</p>
+
+<ul>
+  <li>[x] Make gem-paths absolute</li>
+  <li>[x] Use npm <code class="highlighter-rouge">files</code>
+</li>
+</ul>
+
+<h2 id="v0053">v0.0.53</h2>
+
+<p>Released: 2017-02-14.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.52...v0.0.53">Diff</a>.</p>
+
+<ul>
+  <li>[x] Remove <code class="highlighter-rouge">lib</code> from Git again now that we can build on older nodes now that the es2015-loose problem is solved</li>
+  <li>[x] Also run <code class="highlighter-rouge">lanyon install</code> in the Travis deploy shim, so that we can opt to not install lanyon in unrelated branches</li>
+  <li>[x] Switch from <code class="highlighter-rouge">es2015-loose</code> to <code class="highlighter-rouge">es2015</code> babel preset to resolve build issues on Travis</li>
+  <li>[x] Add Dockerfile for testing building on node 0.12 locally</li>
+  <li>[x] Remove imagemin so long as we’re not using it and it’s causing build problems (gifsicle: Assertion failed: 0 (../deps/uv/src/uv-common.c: uv_err_name: 143))</li>
+</ul>
+
+<h2 id="v0052">v0.0.52</h2>
+
+<p>Released: 2017-02-11.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.51...v0.0.52">Diff</a>.</p>
+
+<ul>
+  <li>[x] Localize <code class="highlighter-rouge">GEM_HOME</code> and <code class="highlighter-rouge">GEM_PATH</code> in container</li>
+  <li>[x] Only run acceptance test on all platforms. Rest of the tests on Node 6 only</li>
+  <li>[x] Distribute the <code class="highlighter-rouge">Gemfile.lock</code> as well, allow updates via <code class="highlighter-rouge">LANYON_UPDATE_GEM_LOCKFILE=1</code>
+</li>
+  <li>[x] Switch from ava -&gt; jest</li>
+  <li>[x] Fix bug: <code class="highlighter-rouge">the input device is not a TTY</code>
+</li>
+  <li>[x] No longer auto install ruby things upon <code class="highlighter-rouge">install</code>, require an explicit call to <code class="highlighter-rouge">cli.js install</code> instead</li>
+  <li>[x] Introduce async/await for internal use (install)</li>
+  <li>[x] Add scrolling output via <code class="highlighter-rouge">scrolex</code>
+</li>
+  <li>[x] Rename <code class="highlighter-rouge">postinstall</code> to <code class="highlighter-rouge">install</code>
+</li>
+</ul>
+
+<h2 id="v0051">v0.0.51</h2>
+
+<p>Released: 2017-01-31.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.50...v0.0.51">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add webpack-svgstore-plugin (@arturi, #6)</li>
+  <li>[x] Remove underscore version from libxml2 on brew osx prefix as <code class="highlighter-rouge">/usr/local/Cellar/libxml2/2.9.4</code> exists but advertised <code class="highlighter-rouge">/usr/local/Cellar/libxml2/2.9.4_2</code> does not</li>
+  <li>[x] Add <code class="highlighter-rouge">container:rebuild</code> to rebuild a container from scratc (<code class="highlighter-rouge">docker build --no-cache</code>)</li>
+</ul>
+
+<h2 id="v0050">v0.0.50</h2>
+
+<p>Released: 2017-01-06.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.49...v0.0.50">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add pkg-config to resolve another Another Nokogiri error https://travis-ci.org/kvz/lanyon/jobs/193744753#L418</li>
+  <li>[x] Skip installs if <code class="highlighter-rouge">LANYON_NOINSTALL==1</code>
+</li>
+  <li>[x] Switch to ES6 (see https://github.com/transloadit/botty/blob/738f9d51417d84d429cd4b558898bc3a9826cd9d/decaf.sh), mostly to profit from template strings. Transpile down to ES5 for npm as Lanyon aims for portability.</li>
+</ul>
+
+<h2 id="v0049">v0.0.49</h2>
+
+<p>Released: 2017-01-06.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.48...v0.0.49">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add experimental support for optimizing images via <code class="highlighter-rouge">build:images</code> (from <code class="highlighter-rouge">assets/images</code> to <code class="highlighter-rouge">assets/build/images</code>)</li>
+  <li>[x] Build docker container inside <code class="highlighter-rouge">.lanyon</code> dir. Write config from <code class="highlighter-rouge">utils</code> like any other config, vs copying over files (allows for intelligent cache invalidation later on also)</li>
+  <li>[x] Do not use docker cache so we get a fresh Gemfile. Fixes https://travis-ci.org/kvz/lanyon/jobs/188882616#L1530</li>
+  <li>[x] Add <code class="highlighter-rouge">container:connect</code> command to look inside docker container</li>
+  <li>[x] Give Lanyon Jekyll <img class="emoji" title=":gem:" alt=":gem:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f48e.png" height="20" width="20" align="absmiddle"> theme awareness</li>
+</ul>
+
+<h2 id="v0048">v0.0.48</h2>
+
+<p>Released: 2017-01-04.
+<a href="https://github.com/kvz/lanyon/compare/v0.0.47...v0.0.48">Diff</a>.</p>
+
+<ul>
+  <li>[x] Upgrade to github pages gem version <code class="highlighter-rouge">v104</code> -&gt; <code class="highlighter-rouge">v112</code> (https://github.com/github/pages-gem/compare/v104…v112)</li>
+  <li>[x] Provide access to gemlist of gh pages gem for internal use via <code class="highlighter-rouge">./lib/cli.js list:ghpgems</code>
+</li>
+  <li>[x] Avoid new installs preferring nokogiri 1.7 over 1.6 so more systems can use Ruby 2.0 vs then nokogiri 1.7 required 2.1</li>
+  <li>[x] Also initProject at <code class="highlighter-rouge">start</code> so that config can be written if users type start as a first run</li>
+  <li>[x] Add a website <a href="http://lanyon.io">http://lanyon.io</a>
+</li>
+  <li>[x] First go into projectDir before running deploy, to support nested websites</li>
+</ul>
+
+<h2 id="v0047">v0.0.47</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.46...v0.0.47">Diff</a>.</p>
+
+<ul>
+  <li>[x] Basic support for injecters via <code class="highlighter-rouge">contentIgnore</code> and <code class="highlighter-rouge">contentScandir</code>
+</li>
+</ul>
+
+<h2 id="v0046">v0.0.46</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.45...v0.0.46">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add support for <code class="highlighter-rouge">OptimizeCssAssetsPlugin</code>
+</li>
+</ul>
+
+<h2 id="v0045">v0.0.45</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.44...v0.0.45">Diff</a>.</p>
+
+<ul>
+  <li>[x] Support for a <code class="highlighter-rouge">js-untouched</code> directory, where js won’t pass through babel</li>
+</ul>
+
+<h2 id="v0044">v0.0.44</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.43...v0.0.44">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix babel source maps</li>
+  <li>[x] Only exit on error when in production mode`</li>
+</ul>
+
+<h2 id="v0043">v0.0.43</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.42...v0.0.43">Diff</a>.</p>
+
+<ul>
+  <li>[x] Use Babel ES2015 as shipped by Lanyon, ignoring any project’s <code class="highlighter-rouge">.babelrc</code> (BREAKING) (We <em>might</em> support sth more intelligent in the future, but for now are favoring convention &amp; near-zero-setup by the project)</li>
+  <li>[x] “Don’t use JSX loader, use babel instead” - https://github.com/petehunt/jsx-loader</li>
+  <li>[x] Fix bug: test: could not interpret expression</li>
+</ul>
+
+<h2 id="v0042">v0.0.42</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.41...v0.0.42">Diff</a>.</p>
+
+<ul>
+  <li>[x] Ditch uglify loader in favor of plugin, as the loader cannot handle ES6 (even though the babel loader is ran first)</li>
+</ul>
+
+<h2 id="v0041">v0.0.41</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.40...v0.0.41">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix bug where only incremental builds receive asset indices</li>
+  <li>[x] Only reset <code class="highlighter-rouge">jekyll.lanyon_assets.yml</code> if it does not exist</li>
+</ul>
+
+<h2 id="v0040">v0.0.40</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.39...v0.0.40">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add globby as a dependency</li>
+</ul>
+
+<h2 id="v0039">v0.0.39</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.38...v0.0.39">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix deploy failsafe</li>
+</ul>
+
+<h2 id="v0038">v0.0.38</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.37...v0.0.38">Diff</a>.</p>
+
+<ul>
+  <li>[x] No longer exclude <code class="highlighter-rouge">node_modules|bower_components|vendor</code> by default</li>
+  <li>[x] Disable resolve-url-loader for less as less currently produces invalid css (in its eyes)</li>
+  <li>[x] Make errors fatal in production</li>
+  <li>[x] Include plain css with ExtractTextPlugin</li>
+</ul>
+
+<h2 id="v0037">v0.0.37</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.36...v0.0.37">Diff</a>.</p>
+
+<ul>
+  <li>[x] Make Deploy check aware of hashed cachebuster assets</li>
+  <li>[x] Fix less resolve-url-loader sourcemap issues</li>
+</ul>
+
+<h2 id="v0036">v0.0.36</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.35...v0.0.36">Diff</a>.</p>
+
+<ul>
+  <li>[x] Move uglify loader to deps (vs devDeps)</li>
+</ul>
+
+<h2 id="v0035">v0.0.35</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.34...v0.0.35">Diff</a>.</p>
+
+<ul>
+  <li>[x] Build assets first, so that Jekyll can copy it into <code class="highlighter-rouge">_site</code>, and also <code class="highlighter-rouge">jekyll.lanyon_assets.yml</code> exists in time</li>
+  <li>[x] Add debugging notes</li>
+  <li>[x] Add uglify as a dependency</li>
+</ul>
+
+<h2 id="v0034">v0.0.34</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.33...v0.0.34">Diff</a>.</p>
+
+<ul>
+  <li>[x] More optimization for production builds</li>
+  <li>[x] Fix svgeezy (which works with a local <code class="highlighter-rouge">svgeezy</code> var, not one on <code class="highlighter-rouge">window</code>)</li>
+  <li>[x] Enable vizualizer support by default, writing to <code class="highlighter-rouge">assets/build/stats.html</code>, unless you set <code class="highlighter-rouge">lanyon.statistics</code> to <code class="highlighter-rouge">false</code> in your <code class="highlighter-rouge">package.json</code>
+</li>
+  <li>[x] Add support for long-term caching, and cache busting</li>
+  <li>[x] Add vizualizer by definining <code class="highlighter-rouge">lanyon.statistics: "webpack-statistics.html"</code> in your <code class="highlighter-rouge">package.json</code>. Directory is fixed to build dir, and this does not work in <code class="highlighter-rouge">development</code>/HMR mode</li>
+  <li>[x] Add support for shared code-splitted bundles by defining <code class="highlighter-rouge">lanyon.common</code> in your <code class="highlighter-rouge">package.json</code>
+</li>
+  <li>[x] Add jquery to bower components</li>
+  <li>[x] Fix coffee loader</li>
+  <li>[x] Add resolve-url-loader so e.g. mediaplayer &amp; select2 can find their relative assets such as <code class="highlighter-rouge">./select2.png</code> or <code class="highlighter-rouge">./controls.png</code>
+</li>
+  <li>[x] Allow asset loaders to load from <code class="highlighter-rouge">bower_components</code>
+</li>
+  <li>[x] Allow bower installed bootstrap-sass to use <code class="highlighter-rouge">window</code> and <code class="highlighter-rouge">jQuery</code>
+</li>
+  <li>[x] Offer a lodash <code class="highlighter-rouge">_</code> plugin</li>
+  <li>[x] Reset (a possibly corrupted) <code class="highlighter-rouge">records.json</code>
+</li>
+  <li>[x] Fix: <code class="highlighter-rouge">Module not found: Error: Cannot resolve module 'fs'</code> by adding  <code class="highlighter-rouge">node: { fs: 'empty' }, target: 'node'</code> to webpack config</li>
+  <li>[x] Support <code class="highlighter-rouge">prebuild*</code> hooks being arrays</li>
+  <li>[x] Fix bad Git ignores</li>
+  <li>[x] Revert plain css files to extract text plugin</li>
+</ul>
+
+<h2 id="v0033-bad-build">v0.0.33 (bad build)</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.32...v0.0.33">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add plain css files to extract text plugin /thx @Acconut</li>
+</ul>
+
+<h2 id="v0032">v0.0.32</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.31...v0.0.32">Diff</a>.</p>
+
+<ul>
+  <li>[x] Allow relative projectDir</li>
+</ul>
+
+<h2 id="v0031">v0.0.31</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.30...v0.0.31">Diff</a>.</p>
+
+<ul>
+  <li>[x] Allow scanning from <code class="highlighter-rouge">LANYON_PROJECT</code>
+</li>
+</ul>
+
+<h2 id="v0030">v0.0.30</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.29...v0.0.30">Diff</a>.</p>
+
+<ul>
+  <li>[x] Never settle for <code class="highlighter-rouge">lanyon</code> as a projectDir</li>
+</ul>
+
+<h2 id="v0029">v0.0.29</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.28...v0.0.29">Diff</a>.</p>
+
+<ul>
+  <li>[x] Do <code class="highlighter-rouge">realpathSync</code> relative from <code class="highlighter-rouge">gitRoot</code>
+</li>
+</ul>
+
+<h2 id="v0028">v0.0.28</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.27...v0.0.28">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix bad build</li>
+</ul>
+
+<h2 id="v0027">v0.0.27</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.26...v0.0.27">Diff</a>.</p>
+
+<ul>
+  <li>[x] Added <code class="highlighter-rouge">utils.upwardDirContaining</code> for definitive pathfinding</li>
+</ul>
+
+<h2 id="v0026">v0.0.26</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.25...v0.0.26">Diff</a>.</p>
+
+<ul>
+  <li>[x] Use <code class="highlighter-rouge">find-up</code> for finding <code class="highlighter-rouge">gitRoot</code> and <code class="highlighter-rouge">npmRoot</code>, which might not be <code class="highlighter-rouge">projectDir</code>
+</li>
+  <li>[x] Also support <code class="highlighter-rouge">web:deploy</code> npm script name</li>
+</ul>
+
+<h2 id="v0025">v0.0.25</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.24...v0.0.25">Diff</a>.</p>
+
+<ul>
+  <li>[x] Also traverse upwards from projectDir to find <code class="highlighter-rouge">node_modules</code>
+</li>
+</ul>
+
+<h2 id="v0024">v0.0.24</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.23...v0.0.24">Diff</a>.</p>
+
+<ul>
+  <li>[x] Better module pathfinding</li>
+</ul>
+
+<h2 id="v0023">v0.0.23</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.22...v0.0.23">Diff</a>.</p>
+
+<ul>
+  <li>[x] Use <code class="highlighter-rouge">gitRoot</code> instead of <code class="highlighter-rouge">projectDir</code> for flat module finding, so it works when your project is in a subdir (like <code class="highlighter-rouge">website</code> or <code class="highlighter-rouge">docs</code>)</li>
+</ul>
+
+<h2 id="v0022">v0.0.22</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.21...v0.0.22">Diff</a>.</p>
+
+<ul>
+  <li>[x] Support for flat module structure where modules live in <code class="highlighter-rouge">projectDir</code>
+</li>
+</ul>
+
+<h2 id="v0021">v0.0.21</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.20...v0.0.21">Diff</a>.</p>
+
+<ul>
+  <li>[x] Deploy now supports <code class="highlighter-rouge">web:build:production</code>
+</li>
+</ul>
+
+<h2 id="v0020">v0.0.20</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.19...v0.0.20">Diff</a>.</p>
+
+<ul>
+  <li>[x] Prefix deps with node</li>
+</ul>
+
+<h2 id="v0019">v0.0.19</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.18...v0.0.19">Diff</a>.</p>
+
+<ul>
+  <li>[x] Fix bug leading to block install resets</li>
+</ul>
+
+<h2 id="v0018">v0.0.18</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.17...v0.0.18">Diff</a>.</p>
+
+<ul>
+  <li>[x] Make installs idempotent</li>
+  <li>[x] Detect rubyProvider of existing shims</li>
+  <li>[x] Introduce a <code class="highlighter-rouge">LANYON_RESET</code>, that removes all shims</li>
+</ul>
+
+<h2 id="v0017">v0.0.17</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.16...v0.0.17">Diff</a>.</p>
+
+<ul>
+  <li>[x] Don’t rely on <code class="highlighter-rouge">.bin</code> symlinks as they don’t appear to survive Travis CI cache</li>
+</ul>
+
+<h2 id="v0016">v0.0.16</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.15...v0.0.16">Diff</a>.</p>
+
+<ul>
+  <li>[x] Use spawn-sync for older nodes</li>
+</ul>
+
+<h2 id="v0015">v0.0.15</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.14...v0.0.15">Diff</a>.</p>
+
+<ul>
+  <li>[x] Pathfinding fixes, added <code class="highlighter-rouge">gitRoot</code>
+</li>
+  <li>[x] Rename <code class="highlighter-rouge">vendor/bin</code> to <code class="highlighter-rouge">bin</code>
+</li>
+  <li>[x] Refactoring of deploy &amp; encrypt</li>
+</ul>
+
+<h2 id="v0014">v0.0.14</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.13...v0.0.14">Diff</a>.</p>
+
+<ul>
+  <li>[x] Offer <code class="highlighter-rouge">lanyon deploy</code> for deploying onto GitHub Pages</li>
+  <li>[x] Offer <code class="highlighter-rouge">lanyon encrypt</code> for encrypting GitHub Pages deploy secrets onto Travis CI</li>
+  <li>[x] Fix broken shim quoting</li>
+</ul>
+
+<h2 id="v0013">v0.0.13</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.12...v0.0.13">Diff</a>.</p>
+
+<ul>
+  <li>[x] Avoid double installs by fixing binDir references for shims</li>
+</ul>
+
+<h2 id="v0012">v0.0.12</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.11...v0.0.12">Diff</a>.</p>
+
+<ul>
+  <li>[x] Utilize Webpack <code class="highlighter-rouge">--production</code> flag</li>
+  <li>[x] Add Jekyll config writer (so we can ignore <code class="highlighter-rouge">node_modules</code> and <code class="highlighter-rouge">.lanyon</code>)</li>
+  <li>[x] By default prefer system ruby over docker, for performance reasons</li>
+</ul>
+
+<h2 id="v0011">v0.0.11</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.10...v0.0.11">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add support for <code class="highlighter-rouge">production</code>-or-<code class="highlighter-rouge">development</code>-only hooks</li>
+  <li>[x] Add coffeescript support</li>
+  <li>[x] Add less support</li>
+</ul>
+
+<h2 id="v0010">v0.0.10</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.9...v0.0.10">Diff</a>.</p>
+
+<ul>
+  <li>[x] Add support for configurable projectDir (so you can have a <code class="highlighter-rouge">./website</code> or <code class="highlighter-rouge">./docs</code> in your project)</li>
+  <li>[x] Refactoring</li>
+</ul>
+
+<h2 id="v009">v0.0.9</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.8...v0.0.9">Diff</a>.</p>
+
+<ul>
+  <li>[x] Switch to a local lanyon install if available</li>
+  <li>[x] Simplify/fix Browserify file watching</li>
+  <li>[x] Do docker connect via shim</li>
+  <li>[x] Store everything in <code class="highlighter-rouge">cacheDir</code> (projectDir/.lanyon) instead of in node_modules dir</li>
+</ul>
+
+<h2 id="v008">v0.0.8</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/v0.0.7...v0.0.8">Diff</a>.</p>
+
+<ul>
+  <li>[x] Support for prebuild hook</li>
+</ul>
+
+<h2 id="v007">v0.0.7</h2>
+
+<p><a href="https://github.com/kvz/lanyon/compare/8d2286d78ea5f0e0ad2b9f021a00158774d31891...v0.0.7">Diff</a>.</p>
+
+<ul>
+  <li>[x] Use textextractor loader in production for scss, also check https://github.com/gowravshekar/font-awesome-webpack#extract-text-webpack-plugin</li>
+  <li>[x] checkout http://stackoverflow.com/questions/33649761/how-do-i-load-font-awesome-using-scss-sass-in-webpack-using-relative-paths</li>
+</ul>
+
+<p><a href="/">« Home</a></p>
+
+
+      <div class="Social">
+        <iframe src="http://ghbtns.com/github-btn.html?user=kvz&amp;repo=lanyon&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+      </div>
+
+      <p>
+        <small>
+          <hr>
+          Website design based on
+          the wonderful <a href="http://apex.run">apex.run</a>
+          with <a href="https://twitter.com/tjholowaychuk/status/744909762865696769">the author's consent</a>.
+        </small>
+      </p>
+    </section>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/languages/bash.min.js"></script>
+  <script async src="/assets/build/app.1eaada0becc0394f7566.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-63083-14', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+      <title>Faq | Lanyon – Jekyll without the hassle | Lanyon</title>
+    
+    <meta name="keywords" content="static, site, generator, jekyll">
+    <meta name="description" content="Lanyon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/build/app.1eaada0becc0394f7566.css"  media="screen" charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <div id="header-overlay"></div>
+      <a href="/">
+        <h1 id="logo">Lanyon</h1>
+      </a>
+      <div id="menu">
+        <i class="material-icons">menu</i>
+        <ul id="menu-items">
+        </ul>
+      </div>
+      <span id="more">
+        <i class="material-icons">expand_more</i>
+      </span>
+    </header>
+    <section id="content">
+      
+
+      <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+
+<h2 id="why-ruby-cant-you-just-decide-to-not-use-it">Why Ruby? Can’t you just decide to <em>not</em> use it?</h2>
+
+<p>It is definitely a pain point and it makes us somewhat jealous of Hugo (and even Hexo). So far, however, 10 out of 10 devs that we asked to make Jekyll working locally had <em>some</em> problem with their Ruby install and its dependencies. The the number of nokogiri or permission errors, version conflicts, etc., we have had to deal with, are just… sad. Lanyon tries its best at resolving this. We are testing for many different Operating Systems and versions, as well as different versions of Node, and Ruby version managers, to see if we can still get Ruby to work on them automatically:</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/26752/20634771/9e163fb2-b354-11e6-914c-ac8e54ab68e1.png" alt="screen shot 2016-11-25 at 21 17 39" /></p>
+
+<h2 id="how-does-lanyon-try-to-install-ruby">How does Lanyon try to install Ruby?</h2>
+
+<p>Lanyon tries to utilize one of following components to acquire a working Ruby 2+ install:</p>
+
+<ol>
+  <li>(Just use the <code class="highlighter-rouge">system</code>’s) Ruby</li>
+  <li><a href="https://www.docker.com/"><code class="highlighter-rouge">docker</code></a></li>
+  <li><a href="https://github.com/rbenv/rbenv"><code class="highlighter-rouge">rbenv</code></a> (with the <a href="https://github.com/rbenv/ruby-build">ruby-build</a> plugin)</li>
+  <li><a href="https://rvm.io/"><code class="highlighter-rouge">rvm</code></a></li>
+</ol>
+
+<p>As soon as a working Ruby install is accomplished, we install Bundler &amp; gems locally in your project directory, and Lanyon can start building.</p>
+
+<p>You can disable any of these via e.g. <code class="highlighter-rouge">LANYON_SKIP="rbenv docker"</code>.</p>
+
+<p>To force a particular type, you can also use <code class="highlighter-rouge">LANYON_ONLY=docker</code>. This is how we isolate methods of installment on Travis for testing as well.</p>
+
+<h2 id="can-i-require-legacy-javascript-in-my-static-site">Can I require legacy JavaScript in my static site?</h2>
+
+<p>Yes. While Lanyon uses Webpack under the hood for asset management, and its focus is on modules, Webpack’s flexibility still allows you to work around this. If you are dealing with legacy jQuery plugins, you may need to customize loaders. You can do so right in the <code class="highlighter-rouge">require</code>s:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s1">'imports?jQuery=jquery,$=jquery,this=&gt;window!../../js/jquery.legacyplugin.js'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>This will make the <code class="highlighter-rouge">jquery</code> module available as both <code class="highlighter-rouge">jQuery</code> and <code class="highlighter-rouge">$</code>, and make <code class="highlighter-rouge">this</code> refer to the global <code class="highlighter-rouge">window</code>, before
+requiring <code class="highlighter-rouge">../../js/jquery.legacyplugin.js</code>.</p>
+
+<p>Furthermore, <code class="highlighter-rouge">js-untouched</code> is a Lanyon-magic folder name, that does not get processed by the JS/Babel loaders. If you have JavaScript files that you absolutely positively don’t want Lanyon to touch (like when they crash babel, are already minified and you cannot obtain the original sources), you can put those in directories (at any level) named: <code class="highlighter-rouge">untouched</code>.</p>
+
+<h2 id="why-does-lanyon-not-pick-up-html-file-changes">Why does Lanyon not pick up HTML file changes?</h2>
+
+<p>Make sure you don’t have an old <code class="highlighter-rouge">nodemon</code> version as a dependency. Npm flat dependencies could favor local installs and ignore Lanyon’s version. Either remove Nodemon from your project or make sure it is at least at a version that recognizes the <code class="highlighter-rouge">--config</code> flag (e.g. <code class="highlighter-rouge">1.11.0</code>).</p>
+
+<p>In one other case that was reported, it turned out to be misconfigured file permissions. You will probably not want to just paste this as it is extremely <strong>dangerous</strong>, but it was ultimately fixed via <code class="highlighter-rouge">sudo chown -vR ${USER}:staff ${HOME} &amp;&amp; sudo chmod -vR ug+rwX,o= ${HOME}</code> on macOS.</p>
+
+<h2 id="why-am-i-seeing-ruby-errors-about-vendors">Why am I seeing Ruby errors about <code class="highlighter-rouge">./vendors</code>?</h2>
+
+<p>If you are seeing things like:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Invalid date <span class="s1">'0000-00-00'</span>: Post <span class="s1">'/vendor/bundle/ruby/2.1.0/gems/jekyll-2.4.0/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb'</span>
+</code></pre>
+</div>
+
+<p>you are likely upgrading from an existing Jekyll install, and haven’t cleared out the <code class="highlighter-rouge">vendor</code> dir. Lanyon only relies on the <code class="highlighter-rouge">.lanyon</code> dir
+inside your project, and you should, therefore, clean up old Jekyll residue as Lanyon does not have build <code class="highlighter-rouge">exclude</code>s for those.</p>
+
+<p>Similarly, it is also important to remove the <code class="highlighter-rouge">.bundle</code> folder from existing Jekyll apps migrating to Lanyon.</p>
+
+<h2 id="how-can-i-solve-nokogiri-errors-on-ubuntu">How can I solve nokogiri errors on Ubuntu?</h2>
+
+<p>You can force docker via <code class="highlighter-rouge">LANYON_ONLY=docker</code>, that will take care of any Ruby dependency mess by 
+using a Lanyon-maintained Docker container. Short of that, this can go a long way in making sure nokogiri behaves:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo -HE apt-get -y -o <span class="s2">"Dpkg::Options::=--force-confdef"</span> -o <span class="s2">"Dpkg::Options::=--force-confold"</span> install <span class="se">\</span>
+  libxslt-dev <span class="se">\</span>
+  libxml2-dev
+</code></pre>
+</div>
+
+<h2 id="what-are-lanyons-prerequisites">What are Lanyon’s prerequisites?</h2>
+
+<p>Plainly speaking, Lanyon should <em>just work</em>. Just in case it doesn’t, here are some tips:</p>
+
+<ul>
+  <li>OSX / Linux (&amp; Bash)</li>
+  <li>Node.js 0.12+ (&amp; npm)</li>
+  <li>Docker or Rvm or Rbenv or Brew</li>
+</ul>
+
+<h2 id="how-do-i-walk-the-docker-route-on-macos">How do I walk the Docker route on macOS?</h2>
+
+<p>Lanyon tries its best to contain the work it does and leave your current Ruby setup alone.
+The best way to do this today is with containers. If your system
+supports <code class="highlighter-rouge">docker</code>, that is what Lanyon will use if your system doesn’t natively support 
+the required Ruby versions.</p>
+
+<p>Since this is a very low-risk approach, it is the recommended way to run Lanyon, and
+we therefore also recommend to install a recent version of Docker first:</p>
+
+<p>In case you had previous Docker experiments, please uninstall those:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>brew uninstall --force docker-machine boot2docker docker
+</code></pre>
+</div>
+
+<p>After that, follow <strong>Docker for Mac</strong> instructions on <a href="https://docs.docker.com/docker-for-mac/">https://docs.docker.com/docker-for-mac/</a> 
+(it’s just installing a <code class="highlighter-rouge">.dmg</code>) and verify that it worked:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>docker --version <span class="o">&amp;&amp;</span> docker ps
+</code></pre>
+</div>
+
+<p><strong>Note</strong> You can force Lanyon to use Docker with this environment variable:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LANYON_ONLY</span><span class="o">=</span>docker
+</code></pre>
+</div>
+
+<h2 id="how-do-i-install-nodejs-on-ubuntu">How do I install Node.js on Ubuntu?</h2>
+
+<p>Lanyon requires Node.js to be present on your system (although we may consider shipping all of Lanyon inside a Docker container in a future version - currently it’s just the Ruby stuff). On older Ubuntu versions, this can 
+still be a bit of a hassle. Here are two different ways of installing Node.js on Ubuntu Trusty:</p>
+
+<p>To install Node.js 6 on Ubuntu Trusty, either use a new release from NodeSource:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+node -v
+</code></pre>
+</div>
+
+<p>Or: if you prefer not to have 3rd party sources, Lanyon (still) supports 0.12, so you might prefer a legacy Node.js version instead:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install nodejs-legacy npm
+node -v
+</code></pre>
+</div>
+
+<h2 id="how-will-i-deploy-my-lanyon-site">How will I deploy my Lanyon site?</h2>
+
+<p>Lanyon assumes automated deployment to GitHub Pages via Travis CI.</p>
+
+<p>Enable building this project on Travis CI by flipping a switch in your account page.</p>
+
+<p>Add a <code class="highlighter-rouge">.travis.yml</code> to your project, similar to this one:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>language: node_js
+node_js: 6
+sudo: false
+script: true # &lt;-- @todo you can test here
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: .lanyon/bin/deploy
+  on:
+    branch: master
+    condition: $TRAVIS_OS_NAME = linux
+</code></pre>
+</div>
+
+<p>Acquire a GitHub token by creating a dedicated GitHub bot user and giving it access to your repo, logging in as it, and going to <a href="https://github.com/settings/tokens">Personal access tokens</a>. There, click Generate new token, name it <code class="highlighter-rouge">Github pages deploy</code>, click <code class="highlighter-rouge">repo</code>, and hit Generate.</p>
+
+<p>Add an <code class="highlighter-rouge">env.sh</code> to your project that you <code class="highlighter-rouge">git ignore</code>, and add the following contents:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GHPAGES_URL</span><span class="o">=</span><span class="s2">"https://&lt;your github token&gt;@github.com/&lt;your github org&gt;/&lt;your github repo&gt;.git"</span>
+<span class="nb">export </span><span class="nv">GHPAGES_BOTNAME</span><span class="o">=</span><span class="s2">"&lt;your github token username&gt;"</span>
+<span class="nb">export </span><span class="nv">GHPAGES_BOTEMAIL</span><span class="o">=</span><span class="s2">"&lt;your github token email&gt;"</span>
+</code></pre>
+</div>
+
+<p>You can now type <code class="highlighter-rouge">source env.sh</code> and use <code class="highlighter-rouge">npm run encrypt</code> to save these secrets on Travis CI.</p>
+
+<p>Now, whenever a push to <code class="highlighter-rouge">master</code> of your project hits GitHub, they will ping Travis CI to kick a build. Your project will install, along with Lanyon. Travis will decrypt the secrets and inject them into the environment. If you didn’t fill out any <code class="highlighter-rouge">script</code> (just <code class="highlighter-rouge">true</code>), Travis will proceed immediately calling <code class="highlighter-rouge">.lanyon/bin/deploy</code>, which in turn calls <code class="highlighter-rouge">npm run build:production &amp;&amp; npm run deploy</code>. This is done because Travis does not allow commands, but only files in that step. Lanyon builds your project and then uses the secrets to force push to your <code class="highlighter-rouge">GHPAGES_URL</code>, which includes your repo address as well as your token. Your site is now live and will be refreshed with every push to <code class="highlighter-rouge">master</code>.</p>
+
+<h2 id="wouldnt-it-be-better-to-just-use-github-pages-rendering">Wouldn’t it be better to just use GitHub pages-rendering?</h2>
+
+<p>That’s certainly getting better <a href="https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3">by the week</a> and we’ll keep a close watch on what we can incorporate from their flow. However, with local development there is no Webpack/BrowserSync, etc. Without using Travis CI, there is little in the way of customization (running your own checkouts / imports / linting and speling checks, etc).</p>
+
+<h2 id="what-if-i-have-custom-build-steps">What if I have custom build steps?</h2>
+
+<p>Consider using hooks, Lanyon currently supports:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">prebuild</code></li>
+  <li><code class="highlighter-rouge">prebuild:production</code></li>
+  <li><code class="highlighter-rouge">prebuild:development</code></li>
+</ul>
+
+<p>Add them like soin your <code class="highlighter-rouge">package.json</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">...</span>
+<span class="s2">"lanyon"</span><span class="err">:</span> <span class="p">{</span>
+  <span class="s2">"prebuild"</span><span class="err">:</span> <span class="s2">"./_scripts/inject.sh"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</code></pre>
+</div>
+
+<p>The environment suffix is for when you only want to run the hook in a certain environment. You can use a string or an array for strings, to be ran sequentially from your <code class="highlighter-rouge">projectDir</code>.</p>
+
+<p>Note that in development, asset changes don’t trigger builds (content changes do) as they are handled in-memory by Webpack to enable HMR, so you’ll have to kick run the hook manually in this case. Changing content will also work. We’d like to research if we can hook into Webpack via a custom plugin so that we don’t have to think about these exceptions anymore.</p>
+
+<p><a href="/">« Home</a></p>
+
+
+      <div class="Social">
+        <iframe src="http://ghbtns.com/github-btn.html?user=kvz&repo=lanyon&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+      </div>
+
+      <p>
+        <small>
+          <hr />
+          Website design based on
+          the wonderful <a href="http://apex.run">apex.run</a>
+          with <a href="https://twitter.com/tjholowaychuk/status/744909762865696769">the author's consent</a>.
+        </small>
+      </p>
+    </section>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/languages/bash.min.js"></script>
+  <script async src="/assets/build/app.1eaada0becc0394f7566.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-63083-14', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>
